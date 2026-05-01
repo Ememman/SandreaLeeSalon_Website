@@ -1,0 +1,1463 @@
+/* styles/landingAnimations.css - ENHANCED TAB ANIMATIONS */
+
+/* ===================================
+   ENHANCED TAB SLIDING ANIMATIONS - IMPROVED!
+   =================================== */
+
+/* Master container for page transitions */
+.page-transition-container {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced Slide Animations with Better Performance */
+@keyframes slideFromRightEnhanced {
+  0% {
+    transform: translateX(100%) perspective(1000px) rotateY(-8deg);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  60% {
+    transform: translateX(-5px) perspective(1000px) rotateY(2deg);
+    opacity: 0.9;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes slideFromLeftEnhanced {
+  0% {
+    transform: translateX(-100%) perspective(1000px) rotateY(8deg);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  60% {
+    transform: translateX(5px) perspective(1000px) rotateY(-2deg);
+    opacity: 0.9;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes slideToRightEnhanced {
+  0% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+  40% {
+    transform: translateX(-8px) perspective(1000px) rotateY(-3deg);
+    opacity: 0.8;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translateX(100%) perspective(1000px) rotateY(8deg);
+    opacity: 0;
+    filter: blur(12px);
+  }
+}
+
+@keyframes slideToLeftEnhanced {
+  0% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+  40% {
+    transform: translateX(8px) perspective(1000px) rotateY(3deg);
+    opacity: 0.8;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translateX(-100%) perspective(1000px) rotateY(-8deg);
+    opacity: 0;
+    filter: blur(12px);
+  }
+}
+
+/* Enhanced Animation Classes with Better Timing */
+.animate-slideFromRightEnhanced {
+  animation: slideFromRightEnhanced 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.animate-slideFromLeftEnhanced {
+  animation: slideFromLeftEnhanced 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.animate-slideToRightEnhanced {
+  animation: slideToRightEnhanced 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.animate-slideToLeftEnhanced {
+  animation: slideToLeftEnhanced 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+/* Enhanced Tab Container with Better Glass Morphism */
+.nav-container-enhanced {
+  position: relative;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 50px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* Enhanced Tab Background Animation */
+.nav-background-enhanced {
+  position: absolute;
+  height: calc(100% - 8px);
+  border-radius: 50px;
+  background: linear-gradient(135deg, #76c4ff 0%, #3352e8 50%, #1e40af 100%);
+  box-shadow: 
+    0 6px 20px rgba(118, 196, 255, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+/* Improved Magnetic hover effect for tabs */
+.nav-item-magnetic {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+  z-index: 2;
+}
+
+.nav-item-magnetic:hover {
+  transform: translateY(-2px) scale(1.08);
+  color: #ffffff !important;
+}
+
+.nav-item-magnetic:active {
+  transform: translateY(0) scale(0.96);
+  transition-duration: 0.1s;
+}
+
+/* Enhanced Ripple effect for tab clicks */
+.nav-item-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease-out, height 0.6s ease-out;
+  z-index: -1;
+}
+
+.nav-item-ripple:active::before {
+  width: 120px;
+  height: 120px;
+}
+
+/* Enhanced active state with glow */
+.nav-item.active {
+  color: #000 !important;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #76c4ff 0%, #3352e8 100%);
+  z-index: -1;
+  opacity: 0.1;
+}
+
+/* Enhanced tab indicator glow */
+.tab-indicator-glow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 120%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(118, 196, 255, 0.6) 0%,
+    rgba(51, 82, 232, 0.3) 40%,
+    transparent 70%
+  );
+  filter: blur(15px);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.nav-item.active ~ .tab-indicator-glow {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Enhanced Page Transition Overlay */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(118, 196, 255, 0.15) 0%,
+    rgba(51, 82, 232, 0.1) 50%,
+    rgba(30, 64, 175, 0.05) 100%
+  );
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.page-transition-overlay.active {
+  opacity: 1;
+}
+
+/* Improved Direction-aware gradient for transitions */
+.page-transition-overlay.slide-right {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(118, 196, 255, 0.2) 30%,
+    rgba(51, 82, 232, 0.15) 50%,
+    rgba(118, 196, 255, 0.2) 70%,
+    transparent 100%
+  );
+  animation: slideOverlayRight 0.6s ease-out forwards;
+}
+
+.page-transition-overlay.slide-left {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(51, 82, 232, 0.2) 30%,
+    rgba(118, 196, 255, 0.15) 50%,
+    rgba(51, 82, 232, 0.2) 70%,
+    transparent 100%
+  );
+  animation: slideOverlayLeft 0.6s ease-out forwards;
+}
+
+@keyframes slideOverlayRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOverlayLeft {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Enhanced Focus States */
+.nav-item:focus-visible {
+  outline: 2px solid #76c4ff;
+  outline-offset: 4px;
+  border-radius: 50px;
+  background: rgba(118, 196, 255, 0.15);
+  transform: scale(1.05);
+}
+
+/* Loading state improvements */
+.tab-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  animation: tabLoadingShine 1.8s ease-in-out infinite;
+}
+
+@keyframes tabLoadingShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Mobile-optimized tab transitions */
+@media (max-width: 768px) {
+  .animate-slideFromRightEnhanced,
+  .animate-slideFromLeftEnhanced,
+  .animate-slideToRightEnhanced,
+  .animate-slideToLeftEnhanced {
+    animation-duration: 0.4s;
+  }
+  
+  .nav-container-enhanced {
+    padding: 4px;
+    margin: 0 1rem;
+    backdrop-filter: blur(20px);
+  }
+  
+  .nav-item-magnetic:hover {
+    transform: none;
+  }
+  
+  .nav-item-magnetic:active {
+    transform: scale(0.92);
+  }
+  
+  .nav-background-enhanced {
+    box-shadow: 
+      0 4px 12px rgba(118, 196, 255, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* High-performance animations */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-background-enhanced,
+  .nav-item-magnetic,
+  .tab-indicator-glow {
+    will-change: transform, opacity;
+  }
+}
+
+/* ===================================
+   ENHANCED UTILITY CLASSES - UPDATED!
+   =================================== */
+
+/* Perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Backface visibility */
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Will-change optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Enhanced transition timing functions */
+.transition-super-smooth {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transition-bounce-gentle {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.transition-elastic {
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* GPU acceleration */
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+/* ===================================
+   EXISTING ANIMATIONS (KEEP THESE - OPTIMIZED)
+   =================================== */
+
+/* GLOWING CTA BUTTON ANIMATIONS */
+.cta-glow-button {
+  position: relative;
+  animation: float-gentle 3s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(118, 196, 255, 0.4),
+    0 0 40px rgba(118, 196, 255, 0.2), 0 0 60px rgba(118, 196, 255, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cta-glow-button:hover {
+  box-shadow: 0 0 30px rgba(118, 196, 255, 0.6),
+    0 0 60px rgba(118, 196, 255, 0.4), 0 0 90px rgba(118, 196, 255, 0.2),
+    0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Gentle floating animation */
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* Pulsing glow animation */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Slower ping animation for outer glow */
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Shimmer effect that moves across the button */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) translateY(200%) rotate(45deg);
+  }
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.3) 55%,
+    transparent 100%
+  );
+  width: 200%;
+  height: 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Enhanced Tab Sliding Animations */
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.animate-slideFromRight {
+  animation: slideFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slideFromLeft {
+  animation: slideFromLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slideToRight {
+  animation: slideToRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slideToLeft {
+  animation: slideToLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Smooth background transition for tabs */
+.transitioning {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Enhanced header alignment */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu-container {
+  flex-shrink: 0;
+}
+
+/* Perfect alignment for navigation items */
+.nav-items-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-item {
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active {
+  color: #000;
+  font-weight: 600;
+}
+
+.nav-background {
+  position: absolute;
+  height: calc(100% - 8px);
+  border-radius: 50px;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: linear-gradient(135deg, #76c4ff 0%, #3352e8 100%);
+}
+
+/* Enhanced focus states */
+.nav-item:focus-visible {
+  outline: 2px solid #76c4ff;
+  outline-offset: 2px;
+  border-radius: 50px;
+}
+
+/* Smooth hover effects */
+.nav-item:not(.active):hover {
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   ENHANCED SCROLL REVEAL ANIMATIONS
+   ============================================ */
+
+/* Base Scroll Reveal with Scale */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.reveal-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-reveal.reveal-fade-out {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.98);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Scroll Reveal from Left with Scale */
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-80px) scale(0.92);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-left.reveal-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.scroll-reveal-left.reveal-fade-out {
+  opacity: 0;
+  transform: translateX(-40px) translateY(-30px) scale(0.95);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Scroll Reveal from Right with Scale */
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(80px) scale(0.92);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal-right.reveal-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.scroll-reveal-right.reveal-fade-out {
+  opacity: 0;
+  transform: translateX(40px) translateY(-30px) scale(0.95);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Fade In Up - Subtle */
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-fade-up.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-fade-up.reveal-fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Zoom In Effect */
+.scroll-zoom {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-zoom.reveal-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scroll-zoom.reveal-fade-out {
+  opacity: 0;
+  transform: scale(0.9) translateY(-20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Rotate In Effect */
+.scroll-rotate {
+  opacity: 0;
+  transform: rotate(-5deg) scale(0.9);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-rotate.reveal-active {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.scroll-rotate.reveal-fade-out {
+  opacity: 0;
+  transform: rotate(2deg) scale(0.95) translateY(-20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Blur In Effect */
+.scroll-blur {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, filter 1s ease-out, transform 1s ease-out;
+}
+
+.scroll-blur.reveal-active {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+.scroll-blur.reveal-fade-out {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease-out, filter 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+/* Stagger Animation Delays */
+.scroll-stagger-1 {
+  transition-delay: 0.1s;
+}
+
+.scroll-stagger-2 {
+  transition-delay: 0.2s;
+}
+
+.scroll-stagger-3 {
+  transition-delay: 0.3s;
+}
+
+.scroll-stagger-4 {
+  transition-delay: 0.4s;
+}
+
+.scroll-stagger-5 {
+  transition-delay: 0.5s;
+}
+
+.scroll-stagger-6 {
+  transition-delay: 0.6s;
+}
+
+/* Parallax Elements */
+.parallax-slow {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.parallax-medium {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.parallax-fast {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* Enhanced Circular Motion Animations for Glowing Circles */
+@keyframes circularMotion1 {
+  /* Circle 1 - Blue - 25 seconds */
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(100px, -80px) scale(1.1);
+  }
+  50% {
+    transform: translate(150px, 50px) scale(0.9);
+  }
+  75% {
+    transform: translate(-50px, 120px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes circularMotion2 {
+  /* Circle 2 - Cyan - 30 seconds */
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-120px, 100px) scale(1.15);
+  }
+  50% {
+    transform: translate(-80px, -70px) scale(0.85);
+  }
+  75% {
+    transform: translate(100px, -120px) scale(1.1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes circularMotion3 {
+  /* Circle 3 - Purple - 28 seconds */
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-100px, -100px) scale(0.9);
+  }
+  50% {
+    transform: translate(120px, -50px) scale(1.2);
+  }
+  75% {
+    transform: translate(80px, 90px) scale(0.95);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Glow Sweep Effects */
+.glow-sweep {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8) 20%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.8) 80%,
+    transparent
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowSweep 3s ease-in-out infinite;
+}
+
+@keyframes glowSweep {
+  0% {
+    background-position-x: -100%;
+  }
+  50% {
+    background-position-x: 100%;
+  }
+  100% {
+    background-position-x: -100%;
+  }
+}
+
+/* Multi-color glow sweep (Recommended) */
+.glow-sweep-multi {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #6b7280,
+    #76c4ff 20%,
+    #ffffff 40%,
+    #76c4ff 60%,
+    #6b7280 80%,
+    #6b7280
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowSweepMulti 4s ease-in-out infinite;
+}
+
+@keyframes glowSweepMulti {
+  0% {
+    background-position-x: -100%;
+  }
+  100% {
+    background-position-x: 200%;
+  }
+}
+
+/* Enhanced Carousel Animations */
+@keyframes carouselSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(30px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes carouselSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.98);
+  }
+}
+
+.carousel-slide-enter {
+  animation: carouselSlideIn 0.7s ease-out forwards;
+}
+
+.carousel-slide-exit {
+  animation: carouselSlideOut 0.7s ease-out forwards;
+}
+
+/* Thumbnail hover effects */
+.thumbnail-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.thumbnail-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+}
+
+/* Custom scrollbar hide for thumbnail strip */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enhanced button pulse effect */
+@keyframes gentlePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+.pulse-gentle {
+  animation: gentlePulse 3s infinite;
+}
+
+/* Glass morphism enhancements */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth image transitions */
+.image-transition {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Timer progress animation */
+.timer-progress {
+  transition: width 1s linear;
+}
+
+/* Auto-play control animations */
+.auto-play-btn {
+  transition: all 0.3s ease;
+}
+
+.auto-play-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Centered thumbnail container */
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Smooth scrolling for thumbnail navigation */
+.thumbnail-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Active thumbnail indicator */
+.thumbnail-indicator {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Enhanced timer display */
+.timer-display {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Progress bar animation */
+@keyframes progressShrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.progress-animate {
+  animation: progressShrink 5s linear forwards;
+}
+
+/* Enhanced focus states for carousel */
+.carousel-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+  border-left: 1px solid #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 6px;
+  border: 2px solid #0f172a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #0f172a;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced blur effects for better glow */
+.blur-3xl {
+  filter: blur(64px);
+}
+
+/* Performance optimizations */
+@media (max-width: 768px) {
+  /* Slower animations on mobile for better performance */
+  .absolute[style*="animation: circularMotion1"] {
+    animation-duration: 35s !important;
+  }
+  .absolute[style*="animation: circularMotion2"] {
+    animation-duration: 40s !important;
+  }
+  .absolute[style*="animation: circularMotion3"] {
+    animation-duration: 38s !important;
+  }
+
+  /* Smaller circles on mobile */
+  .absolute.w-\\[500px\\].h-\\[500px\\] {
+    width: 400px !important;
+    height: 400px !important;
+  }
+  .absolute.w-\\[550px\\].h-\\[550px\\] {
+    width: 450px !important;
+    height: 450px !important;
+  }
+
+  /* Adjust glow effects for mobile */
+  .glow-sweep-multi {
+    animation-duration: 5s;
+  }
+
+  /* Mobile optimizations for carousel */
+  .carousel-container {
+    margin: 0 -1rem;
+  }
+
+  .thumbnail-strip {
+    padding: 0 1rem;
+  }
+
+  .auto-play-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Mobile responsive adjustments for header */
+  .nav-container {
+    position: static;
+    transform: none;
+    margin: 0 auto;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+  }
+
+  /* Optimize button glow on mobile */
+  .cta-glow-button {
+    animation-duration: 4s;
+  }
+
+  .animate-ping-slow {
+    animation-duration: 4s;
+  }
+
+  .animate-pulse-glow {
+    animation-duration: 3s;
+  }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .absolute[style*="animation: circularMotion1"],
+  .absolute[style*="animation: circularMotion2"],
+  .absolute[style*="animation: circularMotion3"] {
+    animation: none !important;
+    opacity: 0.2 !important;
+  }
+
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-fade-up,
+  .scroll-zoom,
+  .scroll-rotate,
+  .scroll-blur,
+  .reveal-fade-out {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .glow-sweep,
+  .glow-sweep-subtle,
+  .glow-sweep-multi,
+  .glow-static {
+    animation: none !important;
+    background: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .carousel-slide-enter,
+  .carousel-slide-exit {
+    animation: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .thumbnail-hover {
+    transition: none;
+  }
+
+  .image-transition {
+    transition: opacity 0.3s ease;
+  }
+
+  .timer-progress {
+    transition: none;
+  }
+
+  .auto-play-btn:hover {
+    transform: none;
+  }
+
+  .pulse-gentle {
+    animation: none;
+  }
+
+  .progress-animate {
+    animation: none;
+  }
+
+  .transitioning {
+    transition: none !important;
+  }
+
+  .parallax-slow,
+  .parallax-medium,
+  .parallax-fast {
+    transition: none !important;
+  }
+
+  /* Disable button glow animations for reduced motion */
+  .cta-glow-button {
+    animation: none !important;
+  }
+
+  .animate-ping-slow,
+  .animate-pulse-glow {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .shimmer-effect {
+    animation: none !important;
+  }
+  
+  /* Disable enhanced tab animations */
+  .animate-slideFromRightEnhanced,
+  .animate-slideFromLeftEnhanced,
+  .animate-slideToRightEnhanced,
+  .animate-slideToLeftEnhanced,
+  .nav-background-enhanced,
+  .nav-item-magnetic,
+  .nav-item-ripple::after,
+  .page-transition-overlay,
+  .tab-indicator-glow {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Additional utility classes for animations */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Backdrop blur utilities */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.backdrop-blur-xl {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.backdrop-blur-\[2px\] {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Fixed menu styles */
+.bg-gradient-to-br.from-gray-900\\/95.via-gray-900\\/95.to-black\\/95 {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Better hover states for menu items */
+.hover\\:bg-white\\/5:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Ensure proper z-index stacking */
+.fixed.inset-0.z-0 {
+  z-index: 0;
+}
+
+.relative.z-10 {
+  z-index: 10;
+}
+
+.fixed.z-50 {
+  z-index: 50;
+}
+
+.fixed.z-40 {
+  z-index: 40;
+}
+
+/* Gradient text utility */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Hover effects */
+.hover\\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover\\:scale-110:hover {
+  transform: scale(1.1);
+}
+
+.group:hover .group-hover\\:scale-110 {
+  transform: scale(1.1);
+}
+
+/* Smooth transitions for transform properties */
+.transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Enhanced logo styling */
+.font-['Tenali_Ramakrishna'] {
+  font-family: "Tenali Ramakrishna", sans-serif;
+}
+
+/* Cursor pointer for clickable elements */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Pointer events for menu */
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Print styles */
+@media print {
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-fade-up,
+  .scroll-zoom,
+  .scroll-rotate,
+  .scroll-blur,
+  .reveal-fade-out {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .glow-sweep,
+  .glow-sweep-subtle,
+  .glow-sweep-multi,
+  .glow-static {
+    animation: none !important;
+    background: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+
+  /* Hide carousel controls in print */
+  .carousel-button,
+  .auto-play-controls,
+  .thumbnail-strip {
+    display: none !important;
+  }
+
+  /* Hide button glow effects in print */
+  .cta-glow-button {
+    animation: none !important;
+    box-shadow: none !important;
+  }
+
+  .animate-ping-slow,
+  .animate-pulse-glow,
+  .shimmer-effect {
+    display: none !important;
+  }
+}

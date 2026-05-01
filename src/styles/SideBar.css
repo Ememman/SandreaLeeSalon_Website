@@ -1,0 +1,476 @@
+/* SideBar.css */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sidebar container */
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0A0E17, #0F1420);
+  border-right: 1px solid rgba(31, 41, 55, 0.5);
+  transition: all 0.5s ease-out;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Enhanced spacing and alignment fixes */
+.sidebar-container nav {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar-container button {
+  margin: 0;
+}
+
+/* Ensure proper text alignment */
+.sidebar-container .flex.items-center {
+  align-items: center;
+}
+
+.sidebar-container .justify-start {
+  justify-content: flex-start;
+}
+
+.sidebar-container .justify-center {
+  justify-content: center;
+}
+
+/* Fix logo alignment */
+.sidebar-container .logo-section .flex {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Improve user section alignment */
+.sidebar-container .user-section .flex.items-center {
+  align-items: center;
+}
+
+/* Ensure proper spacing in user info */
+.sidebar-container .user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Fix navigation item alignment */
+.sidebar-container nav button {
+  align-items: center;
+}
+
+/* Ensure consistent icon sizing */
+.sidebar-container .h-6.w-6 {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+/* Improve hover states */
+.sidebar-container button:hover {
+  transform: none;
+}
+
+.sidebar-container .logo-icon:hover {
+  transform: scale(1.05);
+}
+
+.sidebar-container .user-avatar:hover {
+  transform: scale(1.05);
+}
+
+.sidebar-container .logout-button:hover {
+  transform: scale(1.05);
+}
+
+/* Profile image styling */
+.sidebar-container img {
+  object-fit: cover;
+}
+
+/* User info text styling */
+.user-details p {
+  line-height: 1.25;
+}
+
+.user-details .text-white {
+  font-weight: 600;
+}
+
+.user-details .text-gray-400 {
+  font-weight: 400;
+}
+
+.user-details .text-gray-500 {
+  font-weight: 400;
+}
+
+/* Smooth transitions for user section */
+.user-section {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-info {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading state for user data */
+.user-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.user-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===== ENHANCED STYLES FOR REAL-TIME EMPLOYEE DATA ===== */
+
+/* Loading skeleton animations */
+.sidebar-container .loading-skeleton {
+  background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+/* Enhanced profile image styling with fallbacks */
+.sidebar-container .user-avatar {
+  background-color: #374151; /* Fallback background */
+  border: 2px solid rgba(96, 165, 250, 0.5);
+  transition: all 0.3s ease;
+}
+
+.sidebar-container .user-avatar:hover {
+  border-color: rgba(96, 165, 250, 0.8);
+  transform: scale(1.05);
+}
+
+/* Profile image error handling */
+.sidebar-container img[alt*="Staff"],
+.sidebar-container img[alt*="Employee"] {
+  background-color: #1f2937; /* Dark background for fallback */
+}
+
+/* Error state styling */
+.sidebar-container .error-text {
+  font-size: 0.7rem;
+  line-height: 1;
+  color: #f87171; /* red-400 */
+}
+
+.sidebar-container .error-text::before {
+  content: "⚠ ";
+  font-size: 0.6rem;
+}
+
+/* Text truncation for long names and emails */
+.sidebar-container .truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-container .user-name {
+  max-width: 120px;
+}
+
+.sidebar-container .user-email {
+  max-width: 150px;
+}
+
+.sidebar-container .user-role {
+  max-width: 80px;
+}
+
+/* Enhanced user info section */
+.sidebar-container .user-info-section {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+/* Status indicators */
+.sidebar-container .status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.sidebar-container .status-online {
+  background-color: #10b981; /* green-500 */
+}
+
+.sidebar-container .status-offline {
+  background-color: #6b7280; /* gray-500 */
+}
+
+.sidebar-container .status-busy {
+  background-color: #f59e0b; /* amber-500 */
+}
+
+/* Enhanced navigation item states */
+.sidebar-container nav button.active {
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+  border-left: 4px solid rgb(59, 130, 246);
+  position: relative;
+}
+
+.sidebar-container nav button.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+}
+
+/* Smooth transitions for all interactive elements */
+.sidebar-container * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced logout button states */
+.sidebar-container .logout-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-container .logout-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.sidebar-container .logout-button:hover::before {
+  left: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-height: 700px) {
+  .sidebar-container .user-info-section {
+    min-height: 50px;
+  }
+  
+  .sidebar-container .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .sidebar-container {
+    border-right: 2px solid #4b5563;
+  }
+  
+  .sidebar-container .user-avatar {
+    border: 3px solid #3b82f6;
+  }
+  
+  .sidebar-container nav button.active {
+    border-left: 4px solid #1d4ed8;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-container * {
+    transition: none;
+    animation: none;
+  }
+  
+  .sidebar-container .animate-fadeIn,
+  .sidebar-container .animate-slideInRight {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Dark mode enhancements (already dark, but for consistency) */
+.sidebar-container {
+  color-scheme: dark;
+}
+
+/* Focus states for accessibility */
+.sidebar-container button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.sidebar-container button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Print styles */
+@media print {
+  .sidebar-container {
+    display: none;
+  }
+}
+
+/* Custom scrollbar for webkit browsers (hidden by default but available if needed) */
+.sidebar-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-container::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+  border-radius: 2px;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.7);
+}
+
+/* Enhanced loading states for real-time data */
+.sidebar-container .data-loading {
+  position: relative;
+}
+
+.sidebar-container .data-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success state for data loaded */
+.sidebar-container .data-loaded {
+  animation: subtlePulse 2s ease-in-out;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.9; }
+}
+
+/* Network status indicator */
+.sidebar-container .network-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  z-index: 50;
+}
+
+.sidebar-container .network-online {
+  background-color: #10b981;
+}
+
+.sidebar-container .network-offline {
+  background-color: #ef4444;
+}
+
+/* Avatar fallback styling */
+.sidebar-container .avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* Enhanced text contrast for better readability */
+.sidebar-container .text-gray-400 {
+  color: #9ca3af;
+}
+
+.sidebar-container .text-gray-500 {
+  color: #6b7280;
+}
+
+.sidebar-container .text-white {
+  color: #f9fafb;
+}
+
+/* Ensure proper z-index stacking */
+.sidebar-container .z-40 {
+  z-index: 40;
+}
+
+.sidebar-container .z-50 {
+  z-index: 50;
+}

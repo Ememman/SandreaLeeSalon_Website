@@ -1,0 +1,254 @@
+/* ==========================================
+   NAVBAR CONTAINER
+   ========================================== */
+.modern-navbar {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  width: 100%;
+  pointer-events: auto;
+  position: relative;
+}
+
+/* ==========================================
+   GLASS PILL BACKGROUND
+   ========================================== */
+.navbar-glass {
+  position: relative;
+  padding: 6px;
+  width: 92%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ==========================================
+   NAV BUTTON WRAPPER
+   ========================================== */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 0 18px;
+  width: 100%;
+  position: relative;
+}
+
+/* ==========================================
+   NAV BUTTONS
+   ========================================== */
+.nav-link {
+  position: relative;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.82);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link.active {
+  color: #fff;
+  font-weight: 600;
+  transform: scale(1.05);
+}
+
+/* Fix long text width */
+.nav-link--contact {
+  min-width: 98px;
+}
+
+/* ==========================================
+   MOBILE NAVIGATION
+   ========================================== */
+.navbar-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 0;
+}
+
+/* ==========================================
+   CENTERED HAMBURGER BUTTON
+   ========================================== */
+.hamburger-button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 0;
+}
+
+.hamburger-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hamburger-button__line {
+  width: 24px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+/* Hamburger to X animation */
+.hamburger-button--active .hamburger-button__line--1 {
+  transform: rotate(45deg) translate(6px, 6px);
+  background: #fff;
+}
+
+.hamburger-button--active .hamburger-button__line--2 {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.hamburger-button--active .hamburger-button__line--3 {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background: #fff;
+}
+
+/* ==========================================
+   MOBILE DROPDOWN MENU
+   ========================================== */
+.navbar-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  animation: fadeInDropdown 0.3s ease-out;
+  z-index: 1000;
+}
+
+@keyframes fadeInDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.navbar-dropdown__content {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navbar-dropdown__item {
+  width: 100%;
+  padding: 12px 16px;
+  text-align: center;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.navbar-dropdown__item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar-dropdown__item--active {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 768px) {
+  .navbar-glass {
+    max-width: 460px;
+  }
+
+  .navbar-links {
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  .nav-link {
+    font-size: 0.83rem;
+    padding: 9px 12px;
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-glass {
+    max-width: 360px;
+  }
+
+  .navbar-links {
+    gap: 12px;
+    padding: 0 10px;
+  }
+
+  .nav-link {
+    font-size: 0.74rem;
+    padding: 8px 10px;
+    min-width: 60px;
+  }
+  
+  .nav-link--contact {
+    min-width: 85px;
+  }
+
+  /* Mobile specific adjustments */
+  .hamburger-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hamburger-button__line {
+    width: 20px;
+    height: 2px;
+  }
+
+  .navbar-dropdown__item {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+}

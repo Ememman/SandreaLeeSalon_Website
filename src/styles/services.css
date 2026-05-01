@@ -1,0 +1,1418 @@
+/* styles/services.css - UPDATED WITH HAMBURGER MENU STYLES */
+
+/* ============================================================================
+   ENHANCED TAB SLIDING ANIMATIONS
+   ============================================================================ */
+
+/* Master container for page transitions */
+.page-transition-container {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced Slide Animations with 3D Perspective */
+@keyframes slideFromRightEnhanced {
+  0% {
+    transform: translateX(100%) perspective(1000px) rotateY(-5deg);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  60% {
+    transform: translateX(-10px) perspective(1000px) rotateY(1deg);
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes slideFromLeftEnhanced {
+  0% {
+    transform: translateX(-100%) perspective(1000px) rotateY(5deg);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  60% {
+    transform: translateX(10px) perspective(1000px) rotateY(-1deg);
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes slideToRightEnhanced {
+  0% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+  40% {
+    transform: translateX(-10px) perspective(1000px) rotateY(-2deg);
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+  100% {
+    transform: translateX(100%) perspective(1000px) rotateY(5deg);
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+@keyframes slideToLeftEnhanced {
+  0% {
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+  40% {
+    transform: translateX(10px) perspective(1000px) rotateY(2deg);
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+  100% {
+    transform: translateX(-100%) perspective(1000px) rotateY(-5deg);
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+/* Enhanced Animation Classes */
+.animate-slideFromRightEnhanced {
+  animation: slideFromRightEnhanced 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+}
+
+.animate-slideFromLeftEnhanced {
+  animation: slideFromLeftEnhanced 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+}
+
+.animate-slideToRightEnhanced {
+  animation: slideToRightEnhanced 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.animate-slideToLeftEnhanced {
+  animation: slideToLeftEnhanced 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+/* ============================================================================
+   CRITICAL FIXES FOR CLICKABLE BOOK NOW BUTTONS
+   ============================================================================ */
+
+/* FIX 1: Remove any pointer-events blocking */
+.service-card,
+.service-card * {
+  pointer-events: auto !important;
+}
+
+/* FIX 2: Ensure book button is always clickable */
+.book-button {
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+  transform: translateZ(0) !important;
+}
+
+/* FIX 3: Remove any overlay that might be blocking clicks */
+.service-card::before,
+.service-card::after {
+  pointer-events: none !important;
+}
+
+/* FIX 4: Fix service footer positioning */
+.service-footer {
+  position: relative !important;
+  z-index: 100 !important;
+  pointer-events: auto !important;
+}
+
+/* FIX 5: Ensure no parent elements are blocking clicks */
+.services-grid,
+.services-container {
+  pointer-events: auto !important;
+}
+
+/* FIX 6: Emergency hover states to confirm functionality */
+.book-button:hover {
+  background: linear-gradient(135deg, #8fd1ff, #4a6cf7) !important;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 10px 30px rgba(118, 196, 255, 0.5) !important;
+}
+
+/* FIX 7: Active state for immediate feedback */
+.book-button:active {
+  transform: translateY(0) scale(0.98) !important;
+  background: linear-gradient(135deg, #5aa8e6, #2a45c7) !important;
+}
+
+/* FIX 8: Remove any transform that might be causing stacking issues */
+.service-card:hover .book-button {
+  transform: none !important;
+}
+
+.service-card:hover .book-button:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+}
+
+/* FIX 9: Ensure button is visible and accessible */
+.book-button {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* FIX 10: Add focus styles for accessibility */
+.book-button:focus {
+  outline: 3px solid #76C4FF !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(118, 196, 255, 0.3) !important;
+}
+
+/* FIX 11: Test styles for confirmation */
+.book-button.test-clickable {
+  border: 2px solid #00ff00 !important;
+  animation: pulse-glow 1s infinite !important;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #00ff00, 0 0 20px rgba(0, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px #00ff00, 0 0 40px rgba(0, 255, 0, 0.6);
+  }
+}
+
+/* ============================================================================
+   ENHANCED SERVICE CARD LAYOUTS - IMPROVED PADDING, MARGIN AND SPACING
+   ============================================================================ */
+
+/* RESET AND BASE STYLES */
+* {
+  box-sizing: border-box;
+}
+
+/* SERVICES CONTAINER */
+.services-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* ENHANCED CATEGORY SCROLL CONTAINER */
+.category-scroll-container {
+  display: flex;
+  gap: 20px;
+  padding: 16px 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.category-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* ENHANCED CATEGORY ITEMS */
+.category-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 130px;
+  padding: 20px 16px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.category-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(118, 196, 255, 0.1), rgba(51, 82, 232, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 18px;
+}
+
+.category-item:hover {
+  border-color: rgba(118, 196, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.category-item:hover::before {
+  opacity: 1;
+}
+
+.category-item.active {
+  border-color: #76C4FF;
+  background: linear-gradient(135deg, rgba(118, 196, 255, 0.2), rgba(51, 82, 232, 0.2));
+  box-shadow: 0 12px 30px rgba(118, 196, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.category-item.active::before {
+  opacity: 1;
+}
+
+.category-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.category-item.active .category-image {
+  border-color: #76C4FF;
+  transform: scale(1.1);
+}
+
+.category-name {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  line-height: 1.3;
+}
+
+.category-item.active .category-name {
+  color: #76C4FF;
+  font-weight: 700;
+}
+
+.category-item:hover .category-name {
+  color: #ffffff;
+}
+
+/* ENHANCED SCROLL BUTTONS */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.scroll-button:hover {
+  background: rgba(118, 196, 255, 0.2);
+  border-color: #76C4FF;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-button.left {
+  left: -22px;
+}
+
+.scroll-button.right {
+  right: -22px;
+}
+
+.scroll-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.scroll-button:disabled:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1);
+}
+
+/* ENHANCED SERVICES GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  margin-top: 2rem;
+  padding: 0 8px;
+}
+
+/* ENHANCED SERVICE CARD */
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 280px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(118, 196, 255, 0.05), rgba(51, 82, 232, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 19px;
+}
+
+.service-card:hover {
+  border-color: rgba(118, 196, 255, 0.3);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(118, 196, 255, 0.1);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card.promo::before {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.service-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.promo-badge {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.service-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+/* ENHANCED RATING STYLES */
+.service-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.service-rating .flex {
+  align-items: center;
+}
+
+.service-rating .text-sm {
+  font-size: 0.875rem;
+}
+
+.service-rating .text-xs {
+  font-size: 0.75rem;
+}
+
+.service-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.service-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.service-detail svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.service-price {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.service-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.service-category {
+  color: #76C4FF;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(118, 196, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 12px;
+}
+
+.book-button {
+  background: linear-gradient(135deg, #76C4FF, #3352E8);
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  position: relative;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.book-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(118, 196, 255, 0.4);
+  background: linear-gradient(135deg, #8fd1ff, #4a6cf7);
+}
+
+/* ENHANCED SORT CONTROLS */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2rem;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sort-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sort-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.sort-select:hover {
+  border-color: rgba(118, 196, 255, 0.5);
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #76C4FF;
+  box-shadow: 0 0 0 2px rgba(118, 196, 255, 0.2);
+}
+
+.sort-option {
+  background: #1a1f3d;
+  color: white;
+}
+
+/* ENHANCED SCROLL REVEAL ANIMATIONS - COMPLETELY FIXED VERSION */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+.service-card.scroll-reveal-visible,
+.category-item.scroll-reveal-visible,
+.sort-controls.scroll-reveal-visible,
+.services-container.scroll-reveal-visible,
+.empty-state.scroll-reveal-visible,
+.scroll-reveal.scroll-reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+.scroll-reveal-visible {
+  transition: none !important;
+}
+
+/* ENHANCED LOADING STATES */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.loading-spinner {
+  width: 56px;
+  height: 56px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #76C4FF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ENHANCED EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.empty-state h3 {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.empty-state p {
+  font-size: 16px;
+}
+
+/* ENHANCED REAL-TIME STATUS BADGE */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.status-badge.open {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.status-badge.closed {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-badge.open .status-dot {
+  background: #22c55e;
+  animation: pulse 2s infinite;
+}
+
+.status-badge.closed .status-dot {
+  background: #ef4444;
+}
+
+.status-text {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* ENHANCED TODAY INDICATOR */
+.today-indicator {
+  background: rgba(6, 182, 212, 0.2);
+  color: #06b6d4;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+/* ============================================================================
+   NEW: HAMBURGER MENU STYLES FOR SERVICES PAGE
+   ============================================================================ */
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Menu Content */
+.mobile-menu-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 280px;
+  max-width: 100%;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.98), rgba(3, 7, 18, 0.98));
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 60;
+  overflow-y: auto;
+}
+
+.mobile-menu-content.active {
+  transform: translateX(0);
+}
+
+/* Mobile Menu Header */
+.mobile-menu-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu-close {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile User Info */
+.mobile-user-info {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Navigation Links */
+.mobile-nav-links {
+  padding: 1rem 0;
+}
+
+.mobile-nav-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.mobile-nav-item.active {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border-right: 2px solid #60a5fa;
+}
+
+/* Mobile Profile Menu */
+.mobile-profile-menu {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-profile-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-profile-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.mobile-profile-item.logout {
+  color: #f87171;
+}
+
+.mobile-profile-item.logout:hover {
+  background: rgba(248, 113, 113, 0.1);
+  color: #fca5a5;
+}
+
+/* Mobile Action Buttons */
+.mobile-action-buttons {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Enhanced Mobile Menu Scrolling */
+.mobile-menu-scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.mobile-menu-scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mobile-menu-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-menu-scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.mobile-menu-scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================================
+   QUICK LINKS STYLES FOR SERVICES PAGE
+   ============================================================================ */
+
+/* Quick Links in Footer */
+.quick-links-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links-section li {
+  margin-bottom: 0.5rem;
+}
+
+.quick-links-section button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+  padding: 0.25rem 0;
+}
+
+.quick-links-section button:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Footer link styles */
+footer a,
+footer button {
+  transition: all 0.3s ease;
+}
+
+footer a:hover,
+footer button:hover {
+  color: #76C4FF !important;
+  transform: translateY(-1px);
+}
+
+/* ============================================================================
+   NEW: QUICK BOOK MODAL STYLES
+   ============================================================================ */
+.quick-book-modal {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ============================================================================
+   ENHANCED: QUICK STATS CARDS
+   ============================================================================ */
+.quick-stats-card {
+  transition: all 0.3s ease;
+}
+
+.quick-stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================================
+   ENHANCED: SCROLLBAR FOR CATEGORY CONTAINER (WEBKIT)
+   ============================================================================ */
+.category-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.category-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(118, 196, 255, 0.3);
+  border-radius: 3px;
+}
+
+.category-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(118, 196, 255, 0.5);
+}
+
+/* ============================================================================
+   ENHANCED: SEARCH INPUT FOCUS
+   ============================================================================ */
+.search-input:focus {
+  box-shadow: 
+    0 0 0 3px rgba(118, 196, 255, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================================
+   ENHANCED: ACCESSIBILITY IMPROVEMENTS
+   ============================================================================ */
+.book-button:focus-visible,
+.category-item:focus-visible,
+.sort-select:focus-visible,
+.mobile-nav-item:focus-visible,
+.quick-links-section button:focus-visible {
+  outline: 2px solid #76C4FF;
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   ENHANCED: MOBILE RESPONSIVENESS
+   ============================================================================ */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 24px;
+    padding: 0 4px;
+  }
+  
+  .service-card {
+    padding: 24px;
+    min-height: 260px;
+  }
+  
+  .service-title {
+    font-size: 20px;
+  }
+  
+  .category-item {
+    width: 130px;
+    height: 110px;
+    padding: 16px 12px;
+  }
+  
+  .category-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .category-name {
+    font-size: 12px;
+  }
+  
+  .book-button {
+    padding: 10px 20px;
+    min-width: 110px;
+    font-size: 13px;
+  }
+  
+  .scroll-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .scroll-button.left {
+    left: -10px;
+  }
+  
+  .scroll-button.right {
+    right: -10px;
+  }
+  
+  .sort-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .sort-select {
+    min-width: 100%;
+  }
+  
+  .quick-stats-card {
+    padding: 12px 16px;
+  }
+
+  /* Mobile menu adjustments */
+  .mobile-menu-content {
+    width: 280px;
+  }
+
+  /* Quick links mobile adjustments */
+  .quick-links-section button {
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    gap: 16px;
+  }
+  
+  .service-card {
+    padding: 20px;
+    min-height: 240px;
+  }
+  
+  .service-title {
+    font-size: 18px;
+  }
+  
+  .service-price {
+    font-size: 18px;
+  }
+  
+  .category-item {
+    width: 120px;
+    height: 100px;
+    padding: 14px 10px;
+  }
+  
+  .category-image {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
+  }
+  
+  .category-name {
+    font-size: 11px;
+  }
+  
+  .service-description {
+    font-size: 13px;
+  }
+  
+  .service-detail {
+    font-size: 13px;
+  }
+
+  .mobile-menu-content {
+    width: 100%;
+  }
+
+  /* Quick links small mobile */
+  .quick-links-section button {
+    font-size: 0.8rem;
+    padding: 0.375rem 0;
+  }
+}
+
+/* ============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================================================ */
+.scroll-reveal {
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-visible {
+  will-change: auto;
+}
+
+.service-card,
+.category-item {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ============================================================================
+   REDUCED MOTION SUPPORT FOR ACCESSIBILITY
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .service-card,
+  .category-item,
+  .book-button,
+  .scroll-button {
+    transition: none;
+  }
+
+  .status-dot {
+    animation: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+  
+  .service-card:hover {
+    transform: none;
+  }
+  
+  .category-item:hover {
+    transform: none;
+  }
+
+  .mobile-menu-content {
+    transition: none;
+  }
+
+  .quick-links-section button:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================================
+   CRITICAL FIXES FOR SCROLL ISSUES
+   ============================================================================ */
+.scroll-reveal-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.8s ease, transform 0.8s ease !important;
+}
+
+.service-card,
+.category-item,
+.sort-controls,
+.services-container {
+  transition: all 0.3s ease !important;
+}
+
+.service-card,
+.category-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ============================================================================
+   DARK MODE SUPPORT
+   ============================================================================ */
+@media (prefers-color-scheme: dark) {
+  .service-card {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* ============================================================================
+   ENHANCED MAP AND SCHEDULE SECTION SPACING
+   ============================================================================ */
+.map-schedule-container {
+  margin-top: 4rem;
+}
+
+.map-section,
+.schedule-section {
+  padding: 24px;
+}
+
+/* BETTER SPACING FOR SCHEDULE ITEMS */
+.schedule-day {
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.schedule-day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ENHANCED FOOTER SPACING */
+.footer-content {
+  padding: 3rem 0;
+}
+
+.footer-section {
+  margin-bottom: 2rem;
+}
+
+/* ADDITIONAL UTILITY CLASSES FOR BETTER SPACING */
+.section-spacing {
+  margin: 3rem 0;
+  padding: 2rem 0;
+}
+
+.card-spacing {
+  margin: 1rem 0;
+  padding: 1.5rem;
+}
+
+.container-spacing {
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    margin: 2rem 0;
+    padding: 1.5rem 0;
+  }
+  
+  .card-spacing {
+    margin: 0.75rem 0;
+    padding: 1.25rem;
+  }
+  
+  .container-spacing {
+    padding: 0 0.5rem;
+  }
+}
+
+/* ============================================================================
+   URGENT CLICKABLE BUTTON GUARANTEES
+   ============================================================================ */
+
+/* GUARANTEE 1: No stacking context issues */
+.service-card {
+  isolation: isolate;
+}
+
+/* GUARANTEE 2: Button always on top */
+.book-button {
+  position: relative;
+  z-index: 1001 !important;
+}
+
+/* GUARANTEE 3: No parent interference */
+.service-footer {
+  position: relative;
+  z-index: 1000;
+}
+
+/* GUARANTEE 4: Touch device support */
+@media (hover: none) and (pointer: coarse) {
+  .book-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .book-button:active {
+    background: linear-gradient(135deg, #5aa8e6, #2a45c7) !important;
+    transform: scale(0.95) !important;
+  }
+
+  .quick-links-section button:active {
+    transform: translateX(5px) scale(0.98);
+    color: #76C4FF;
+  }
+}
+
+/* GUARANTEE 5: High contrast for visibility */
+.book-button {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* GUARANTEE 6: Emergency override for any framework conflicts */
+.book-button {
+  all: unset;
+  background: linear-gradient(135deg, #76C4FF, #3352E8) !important;
+  color: black !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  min-width: 120px !important;
+  position: relative !important;
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+  display: inline-block !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  font-family: inherit !important;
+  line-height: normal !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* GUARANTEE 7: Force browser to recognize as clickable */
+.book-button,
+.book-button * {
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* GUARANTEE 8: Remove any potential CSS framework overrides */
+.book-button:hover,
+.book-button:focus,
+.book-button:active {
+  background: linear-gradient(135deg, #8fd1ff, #4a6cf7) !important;
+  color: black !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 8px 25px rgba(118, 196, 255, 0.4) !important;
+}

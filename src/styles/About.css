@@ -1,0 +1,438 @@
+/* styles/About.css */
+
+.about-page {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f4b 50%, #0a0e27 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+.about-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 14, 39, 0.9) 0%,
+    rgba(26, 31, 75, 0.7) 50%,
+    rgba(10, 14, 39, 0.9) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(120, 119, 198, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 119, 198, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(120, 219, 255, 0.15) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Enhanced Header Styles */
+header {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Fix for content spacing with fixed header */
+.page-content {
+  padding-top: 80px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure all sections have proper z-index */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced background animations */
+@keyframes circularMotion1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(5%, 5%) scale(1.05);
+  }
+  50% {
+    transform: translate(2%, 8%) scale(1.02);
+  }
+  75% {
+    transform: translate(8%, 2%) scale(1.08);
+  }
+}
+
+@keyframes circularMotion2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-5%, -2%) scale(1.03);
+  }
+  50% {
+    transform: translate(-8%, 3%) scale(1.07);
+  }
+  75% {
+    transform: translate(-3%, -5%) scale(1.04);
+  }
+}
+
+@keyframes circularMotion3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(3%, -8%) scale(1.06);
+  }
+  50% {
+    transform: translate(7%, 2%) scale(1.01);
+  }
+  75% {
+    transform: translate(2%, 7%) scale(1.09);
+  }
+}
+
+.team-member {
+  transition: all 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+}
+
+.team-member:hover .team-member-image {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(118, 196, 255, 0.3);
+}
+
+.team-member-image {
+  transition: all 0.3s ease;
+}
+
+/* Testimonial carousel specific styles */
+.testimonial-slide {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.testimonial-slide-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.testimonial-slide-prev {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.testimonial-slide-next {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Core values cards animation */
+.core-value-card {
+  transition: all 0.4s ease;
+}
+
+.core-value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Story section enhancements */
+.story-section {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.8) 0%,
+    rgba(30, 41, 59, 0.6) 100%
+  );
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive adjustments for about page */
+@media (max-width: 768px) {
+  .about-hero {
+    min-height: 50vh;
+  }
+
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .team-member {
+    margin-bottom: 2rem;
+  }
+
+  .core-value-card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Animation delays for staggered appearance */
+.scroll-stagger-1 {
+  transition-delay: 0.1s;
+}
+.scroll-stagger-2 {
+  transition-delay: 0.2s;
+}
+.scroll-stagger-3 {
+  transition-delay: 0.3s;
+}
+.scroll-stagger-4 {
+  transition-delay: 0.4s;
+}
+.scroll-stagger-5 {
+  transition-delay: 0.5s;
+}
+
+/* Enhanced text readability */
+.about-content p {
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Section spacing */
+.about-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .about-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Gradient text effects */
+.gradient-text {
+  background: linear-gradient(135deg, #76c4ff 0%, #3352e8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effects */
+.about-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-card:hover {
+  border-color: rgba(118, 196, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(118, 196, 255, 0.2);
+}
+
+/* Team member photo placeholder */
+.team-photo-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Testimonial image styling */
+.testimonial-image {
+  border: 3px solid;
+  border-image: linear-gradient(135deg, #76c4ff, #3352e8) 1;
+  transition: all 0.3s ease;
+}
+
+.testimonial-image:hover {
+  border-image: linear-gradient(135deg, #3352e8, #76c4ff) 1;
+  transform: scale(1.05);
+}
+
+/* Navigation active state for about page */
+.nav-item.active[data-tab="About"] {
+  background: linear-gradient(135deg, #76c4ff, #3352e8);
+  color: #000;
+  font-weight: 600;
+}
+
+/* Loading states */
+.team-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.team-loading::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(118, 196, 255, 0.3);
+  border-top: 4px solid #76c4ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error state styling */
+.team-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Success state */
+.team-success {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Print styles for about page */
+@media print {
+  .about-hero {
+    background: white !important;
+    color: black !important;
+  }
+
+  .team-member {
+    break-inside: avoid;
+  }
+
+  .testimonial-carousel {
+    break-inside: avoid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .about-card {
+    border: 2px solid #ffffff;
+  }
+
+  .team-member {
+    border: 1px solid #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .team-member,
+  .core-value-card,
+  .testimonial-image {
+    transition: none;
+  }
+
+  .scroll-stagger-1,
+  .scroll-stagger-2,
+  .scroll-stagger-3,
+  .scroll-stagger-4,
+  .scroll-stagger-5 {
+    transition-delay: 0s;
+  }
+
+  header {
+    backdrop-filter: none;
+  }
+}
+
+/* ============================================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================================ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-zoom {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s ease-out;
+}
+
+.reveal-active {
+  opacity: 1 !important;
+  transform: translate(0) scale(1) !important;
+}
+
+.reveal-fade-out {
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+/* Performance optimizations */
+.scroll-reveal,
+.scroll-reveal-left,
+.scroll-reveal-right,
+.scroll-fade-up,
+.scroll-zoom {
+  will-change: opacity, transform;
+}
+
+.reveal-active {
+  will-change: auto;
+}

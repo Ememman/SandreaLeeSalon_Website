@@ -1,0 +1,983 @@
+/* Urbanist Font Face */
+@font-face {
+  font-family: "Urbanist";
+  src: url("../assets/fonts/Urbanist-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Urbanist", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.login-form-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 50%, #0a0e17 100%);
+  padding: 20px;
+  position: relative;
+  font-family: "Urbanist", sans-serif;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-family: "Urbanist", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  z-index: 10;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(-2px);
+}
+
+/* Updated container styles - removed white background */
+.login-form-card {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 1200px;
+  width: 100%;
+  overflow: hidden;
+  backdrop-filter: none;
+  border: none;
+  margin: 20px;
+}
+
+.login-content {
+  display: flex;
+  min-height: 700px;
+  width: 100%;
+  background: rgba(17, 25, 40, 0.95);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.login-left-panel {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+}
+
+.login-right-panel {
+  flex: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mobile Logo */
+.mobile-logo {
+  display: none;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.salon-logo-mobile {
+  max-width: 200px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.login-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.salon-logo {
+  max-width: 280px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.login-header h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: "Urbanist", sans-serif;
+}
+
+.login-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: "Urbanist", sans-serif;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Auth Tabs */
+.auth-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 6px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Urbanist", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(102, 126, 234, 0.2),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.tab-button:hover::before {
+  left: 100%;
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Message Display */
+.message {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-family: "Urbanist", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  animation: slideInDown 0.3s ease-out;
+}
+
+.message.success {
+  background: rgba(72, 187, 120, 0.1);
+  border: 1px solid rgba(72, 187, 120, 0.3);
+  color: #48bb78;
+}
+
+.message.error {
+  background: rgba(245, 101, 101, 0.1);
+  border: 1px solid rgba(245, 101, 101, 0.3);
+  color: #f56565;
+}
+
+/* Auth Forms */
+.auth-form {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.name-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Floating Label Styles */
+.floating-label-group {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.floating-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.floating-input {
+  width: 100%;
+  padding: 24px 18px 12px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  font-family: "Urbanist", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.floating-input::placeholder {
+  color: transparent;
+}
+
+.floating-input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 0 0 4px rgba(102, 126, 234, 0.15),
+    0 4px 20px rgba(102, 126, 234, 0.2);
+  padding-top: 24px;
+  padding-bottom: 12px;
+}
+
+.floating-input:hover:not(:focus) {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.floating-label {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Urbanist", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+  background: transparent;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+.floating-label.floating {
+  top: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #667eea;
+  transform: translateY(0);
+  background: linear-gradient(to bottom, rgba(17, 25, 40, 0.9), rgba(17, 25, 40, 0.8));
+  backdrop-filter: blur(10px);
+}
+
+.floating-input:focus + .floating-label {
+  top: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #667eea;
+  background: linear-gradient(to bottom, rgba(17, 25, 40, 0.9), rgba(17, 25, 40, 0.8));
+  backdrop-filter: blur(10px);
+}
+
+.floating-input-container.error .floating-input {
+  border-color: #f56565;
+  box-shadow: 
+    0 0 0 4px rgba(245, 101, 101, 0.15),
+    0 4px 20px rgba(245, 101, 101, 0.1);
+}
+
+.floating-input-container.error .floating-input:focus {
+  border-color: #f56565;
+  box-shadow: 
+    0 0 0 4px rgba(245, 101, 101, 0.2),
+    0 4px 20px rgba(245, 101, 101, 0.15);
+}
+
+.floating-input-container.error .floating-label {
+  color: #f56565;
+}
+
+/* Password Toggle Button Styles */
+.password-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.password-toggle:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.password-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.5);
+}
+
+.password-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.floating-input-container.password-container .floating-input {
+  padding-right: 50px;
+}
+
+/* Password Hint */
+.password-hint {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  margin-top: 6px;
+  padding-left: 4px;
+  font-family: "Urbanist", sans-serif;
+  font-weight: 400;
+}
+
+/* Enhanced Error Text */
+.error-text {
+  color: #f56565;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  display: block;
+  font-family: "Urbanist", sans-serif;
+  font-weight: 500;
+  padding-left: 4px;
+  animation: slideInDown 0.3s ease-out;
+}
+
+/* Form Options */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 0 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: "Urbanist", sans-serif;
+}
+
+.checkbox-label input {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label input:checked + .checkmark {
+  background: #667eea;
+  border-color: #667eea;
+}
+
+.checkbox-label input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #f093fb;
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-family: "Urbanist", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.submit-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.submit-button:hover::before {
+  left: 100%;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 30px rgba(102, 126, 234, 0.5),
+    0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button Spinner */
+.button-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+/* Social Login */
+.social-login {
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divider {
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Urbanist", sans-serif;
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Urbanist", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.social-button:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.social-button img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  margin-top: 10px;
+}
+
+.checkbox-group .checkbox-label {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.checkbox-group a {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.checkbox-group a:hover {
+  color: #f093fb;
+}
+
+.terms-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.terms-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(135deg, #667eea, #f093fb);
+  transition: width 0.3s ease;
+}
+
+.terms-link:hover {
+  color: #f093fb;
+}
+
+.terms-link:hover::after {
+  width: 100%;
+}
+
+.required-asterisk {
+  color: #f56565;
+  margin-left: 4px;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+/* Right Panel Styles */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(10, 14, 23, 0.95));
+  color: white;
+  padding: 100px 50px 50px;
+}
+
+.overlay-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: "Urbanist", sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.overlay-content p {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+  font-family: "Urbanist", sans-serif;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatLabel {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10px) scale(0.85);
+    opacity: 1;
+  }
+}
+
+/* Enhanced animations */
+.login-left-panel {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.auth-form {
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.floating-label-group {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Enhanced Focus States for Accessibility */
+.floating-input:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablet Portrait (600px - 767px) */
+@media (max-width: 767px) {
+  .login-content {
+    flex-direction: column;
+    min-height: auto;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .login-right-panel {
+    display: none;
+  }
+
+  .login-left-panel {
+    padding: 40px 30px;
+    background: rgba(17, 25, 40, 0.98);
+  }
+
+  .login-form-card {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 10px 14px;
+  }
+
+  .salon-logo {
+    max-width: 200px;
+  }
+
+  .mobile-logo {
+    display: block;
+  }
+
+  .logo-section {
+    display: none;
+  }
+
+  .login-header {
+    margin-bottom: 25px;
+  }
+
+  .login-header h2 {
+    font-size: 1.7rem;
+  }
+
+  .login-header p {
+    font-size: 1rem;
+  }
+
+  .name-fields {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .floating-input {
+    padding: 22px 16px 10px;
+    border-radius: 12px;
+  }
+
+  .floating-label {
+    top: 16px;
+    left: 16px;
+    font-size: 0.95rem;
+  }
+
+  .floating-label.floating,
+  .floating-input:focus + .floating-label {
+    top: 7px;
+    font-size: 0.75rem;
+  }
+
+  /* Mobile password toggle adjustments */
+  .floating-input-container.password-container .floating-input {
+    padding-right: 45px;
+  }
+
+  .password-toggle {
+    right: 10px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .password-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Mobile Large (480px - 599px) */
+@media (max-width: 599px) {
+  .login-form-container {
+    padding: 15px 10px;
+  }
+
+  .login-left-panel {
+    padding: 35px 25px;
+  }
+
+  .back-button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .back-text {
+    display: none;
+  }
+
+  .salon-logo-mobile {
+    max-width: 160px;
+  }
+
+  .social-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .floating-input {
+    padding: 20px 14px 8px;
+  }
+
+  .floating-label {
+    top: 14px;
+    left: 14px;
+    font-size: 0.9rem;
+  }
+
+  .floating-label.floating,
+  .floating-input:focus + .floating-label {
+    top: 6px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile Small (320px - 479px) */
+@media (max-width: 479px) {
+  .login-form-container {
+    padding: 10px 8px;
+  }
+
+  .login-left-panel {
+    padding: 30px 20px;
+  }
+
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-header p {
+    font-size: 0.95rem;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    padding: 6px 10px;
+  }
+
+  .salon-logo-mobile {
+    max-width: 140px;
+  }
+
+  .tab-button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .floating-input {
+    padding: 18px 12px 6px;
+  }
+
+  .floating-label {
+    top: 12px;
+    left: 12px;
+    font-size: 0.85rem;
+  }
+
+  .floating-label.floating,
+  .floating-input:focus + .floating-label {
+    top: 5px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Very Small Mobile (below 320px) */
+@media (max-width: 319px) {
+  .login-form-container {
+    padding: 8px 5px;
+  }
+
+  .login-left-panel {
+    padding: 25px 15px;
+  }
+
+  .back-button {
+    padding: 5px 8px;
+  }
+
+  .back-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .submit-button {
+    padding: 14px;
+  }
+}

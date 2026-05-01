@@ -1,0 +1,299 @@
+/* Favorites.css */
+.favorites-overlay {
+  backdrop-filter: blur(4px);
+}
+
+.favorites-container {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom scrollbar for the favorites container */
+.favorites-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.favorites-container::-webkit-scrollbar-track {
+  background: #1a2332;
+  border-radius: 0 12px 12px 0;
+}
+
+.favorites-container::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.favorites-container::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Smooth animations */
+@keyframes favoritesSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation to modal */
+.favorites-overlay > div {
+  animation: favoritesSlideIn 0.3s ease-out;
+}
+
+/* Fade in animation */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hover effects for product cards */
+.group:hover .opacity-0 {
+  opacity: 1;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pulse animation for loading states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 480px) {
+  .favorites-container {
+    margin: 0.5rem;
+    max-height: 98vh;
+    border-radius: 0.5rem;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .favorites-overlay {
+    padding: 0.5rem;
+  }
+  
+  .favorites-container {
+    max-height: 97vh;
+  }
+  
+  /* Mobile-specific adjustments */
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-p-2 {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites-container {
+    margin: 1rem;
+    max-height: 95vh;
+  }
+  
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Mobile touch-friendly buttons */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1536px) {
+  .favorites-container {
+    max-width: 80rem;
+  }
+}
+
+/* Custom button styles */
+.btn-purple {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-purple:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Card hover effects */
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Success message animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+/* Empty state styling */
+.empty-state {
+  background: linear-gradient(135deg, #1a2332 0%, #0f1621 100%);
+  border: 2px dashed #374151;
+}
+
+/* Improved image responsiveness */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Safe area support for notched devices */
+@supports(padding: max(0px)) {
+  .favorites-overlay {
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin,
+  .animate-fade-in,
+  .animate-slide-in-right,
+  .transition-all {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gray-600 {
+    background-color: #000;
+  }
+  
+  .text-gray-400 {
+    color: #fff;
+  }
+  
+  .border-gray-700 {
+    border-color: #fff;
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  .favorites-container {
+    background: #1a2332;
+  }
+  
+  .bg-\[\#0f1621\] {
+    background: #0f1621;
+  }
+}
+
+/* Print styles */
+@media print {
+  .favorites-overlay {
+    position: static;
+    background: white;
+  }
+  
+  .favorites-container {
+    box-shadow: none;
+    max-height: none;
+  }
+  
+  button {
+    display: none;
+  }
+}

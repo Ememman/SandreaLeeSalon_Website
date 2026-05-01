@@ -1,0 +1,621 @@
+/* Urbanist Font Face */
+@font-face {
+  font-family: "Urbanist";
+  src: url("../assets/fonts/Urbanist-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Urbanist", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.role-selection-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 50%, #0a0e17 100%);
+  padding: 20px;
+  position: relative;
+  font-family: "Urbanist", sans-serif;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-family: "Urbanist", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  z-index: 10;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(-2px);
+}
+
+.role-selection-card {
+  background: rgba(17, 25, 40, 0.95);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  max-width: 1200px;
+  width: 100%;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 20px;
+}
+
+.role-content {
+  display: flex;
+  min-height: 600px;
+}
+
+.role-left-panel {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+}
+
+.role-right-panel {
+  flex: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mobile Logo */
+.mobile-logo {
+  display: none;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.salon-logo-mobile {
+  max-width: 200px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.role-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.salon-logo {
+  max-width: 280px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.role-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: "Urbanist", sans-serif;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.role-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.role-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(102, 126, 234, 0.15),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.role-card:hover::before {
+  left: 100%;
+}
+
+.role-card:hover {
+  border-color: rgba(102, 126, 234, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+}
+
+.role-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.role-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.role-card:hover .role-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+.role-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.role-info {
+  flex: 1;
+  min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.role-info h3 {
+  color: #ffffff;
+  margin-bottom: 6px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: "Urbanist", sans-serif;
+}
+
+.role-info p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: "Urbanist", sans-serif;
+}
+
+.role-arrow {
+  color: #667eea;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.role-card:hover .role-arrow {
+  transform: translateX(5px);
+  opacity: 1;
+  color: #ffffff;
+}
+
+.role-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.role-footer p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-family: "Urbanist", sans-serif;
+}
+
+.role-footer span {
+  color: #667eea;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.role-footer span:hover {
+  color: #f093fb;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(10, 14, 23, 0.95));
+  color: white;
+  padding: 100px 50px 50px;
+}
+
+.overlay-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  font-family: "Urbanist", sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.overlay-content p {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  font-family: "Urbanist", sans-serif;
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  font-family: "Urbanist", sans-serif;
+}
+
+.stat span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-family: "Urbanist", sans-serif;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.role-left-panel {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.role-card:nth-child(1) {
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.role-card:nth-child(2) {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Large Desktop (1200px and above) */
+@media (min-width: 1200px) {
+  .role-selection-card {
+    max-width: 1100px;
+  }
+
+  .role-left-panel {
+    padding: 60px 50px;
+  }
+}
+
+/* Desktop (1024px - 1199px) */
+@media (max-width: 1199px) {
+  .role-selection-card {
+    max-width: 1000px;
+  }
+
+  .salon-logo {
+    max-width: 240px;
+  }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media (max-width: 1023px) {
+  .role-selection-card {
+    max-width: 900px;
+    margin: 15px;
+  }
+
+  .role-left-panel {
+    padding: 40px 35px;
+  }
+
+  .salon-logo {
+    max-width: 220px;
+  }
+
+  .role-card {
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .role-icon {
+    width: 55px;
+    height: 55px;
+    padding: 10px;
+  }
+}
+
+/* Tablet Portrait (600px - 767px) */
+@media (max-width: 767px) {
+  .role-content {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .role-right-panel {
+    display: none;
+  }
+
+  .role-left-panel {
+    padding: 40px 30px;
+    background: rgba(17, 25, 40, 0.98);
+  }
+
+  .role-selection-card {
+    max-width: 500px;
+    margin: 10px;
+  }
+
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 10px 14px;
+  }
+
+  .salon-logo {
+    max-width: 200px;
+  }
+
+  .mobile-logo {
+    display: block;
+  }
+
+  .logo-section {
+    display: none;
+  }
+
+  .role-header {
+    margin-bottom: 30px;
+  }
+
+  .role-header p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Large (480px - 599px) */
+@media (max-width: 599px) {
+  .role-selection-container {
+    padding: 15px 10px;
+  }
+
+  .role-left-panel {
+    padding: 35px 25px;
+  }
+
+  .role-card {
+    padding: 18px;
+    gap: 15px;
+  }
+
+  .role-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .role-info p {
+    font-size: 0.9rem;
+  }
+
+  .back-button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .back-text {
+    display: none; /* Hide text on very small screens */
+  }
+
+  .salon-logo-mobile {
+    max-width: 160px;
+  }
+
+  .role-icon {
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    border-radius: 12px;
+  }
+}
+
+/* Mobile Small (320px - 479px) */
+@media (max-width: 479px) {
+  .role-selection-container {
+    padding: 10px 8px;
+  }
+
+  .role-left-panel {
+    padding: 30px 20px;
+  }
+
+  .role-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .role-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .role-info p {
+    font-size: 0.85rem;
+  }
+
+  .role-header p {
+    font-size: 0.95rem;
+  }
+
+  .role-footer p {
+    font-size: 0.85rem;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    padding: 6px 10px;
+  }
+
+  .salon-logo-mobile {
+    max-width: 140px;
+  }
+
+  .role-icon {
+    width: 45px;
+    height: 45px;
+    padding: 7px;
+  }
+
+  .roles-list {
+    gap: 12px;
+  }
+}
+
+/* Very Small Mobile (below 320px) */
+@media (max-width: 319px) {
+  .role-selection-container {
+    padding: 8px 5px;
+  }
+
+  .role-left-panel {
+    padding: 25px 15px;
+  }
+
+  .role-card {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .role-info h3 {
+    font-size: 1rem;
+  }
+
+  .role-info p {
+    font-size: 0.8rem;
+  }
+
+  .back-button {
+    padding: 5px 8px;
+  }
+
+  .back-button svg {
+    width: 16px;
+    height: 16px;
+  }
+}

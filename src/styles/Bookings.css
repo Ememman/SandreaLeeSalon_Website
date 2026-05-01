@@ -1,0 +1,505 @@
+/* Bookings.css */
+.bookings-overlay {
+  backdrop-filter: blur(4px);
+}
+
+.bookings-container {
+  animation: bookingsSlideIn 0.3s ease-out;
+}
+
+@keyframes bookingsSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Custom scrollbar for bookings container */
+.bookings-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bookings-container::-webkit-scrollbar-track {
+  background: #1a2332;
+  border-radius: 0 12px 12px 0;
+}
+
+.bookings-container::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.bookings-container::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Enhanced Tab Navigation with Container-Matching Colors */
+.tab-button {
+  position: relative;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active tab state - matches container background */
+.tab-active {
+  background: #0f1621 !important;
+  color: white !important;
+  position: relative;
+  transform: translateY(1px);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* Inactive tab state */
+.tab-inactive {
+  background: #1a2332;
+  color: #9CA3AF;
+}
+
+.tab-inactive:hover {
+  background: #1e293b;
+  color: #D1D5DB;
+}
+
+/* Tab container styling */
+.tab-button:first-child.tab-active {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.tab-button:last-child.tab-active {
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth transition for background and text color */
+.tab-button {
+  transition: 
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active state elevation effect */
+.tab-active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #60a5fa, #a78bfa, #fbbf24);
+  border-radius: 1px;
+}
+
+/* Subtle slide animation for tab switch */
+@keyframes tabSlideIn {
+  from {
+    opacity: 0.8;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-active {
+  animation: tabSlideIn 0.3s ease-out;
+}
+
+/* Booking card styling to match image */
+.booking-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #60a5fa, #a78bfa, #fbbf24);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.booking-card:hover::before {
+  transform: scaleX(1);
+}
+
+.booking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced button styles */
+.bookings-container .border-red-500:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+.bookings-container .border-blue-500:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.bookings-container .border-green-500:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+}
+
+/* Loading animation */
+.bookings-container .animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Focus states for accessibility */
+.bookings-container button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Back button hover effect */
+.bookings-container .absolute.top-4.left-4:hover,
+.bookings-container .absolute.top-6.left-6:hover {
+  transform: translateX(-2px);
+}
+
+/* Status badge pulse animation for upcoming bookings */
+@keyframes pulse-upcoming {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.bg-yellow-500.bg-opacity-20 {
+  animation: pulse-upcoming 2s infinite;
+}
+
+/* Enhanced booking card styling */
+.booking-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #374151, transparent);
+}
+
+/* Success and error message animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-red-400, .text-green-400 {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Print styles */
+@media print {
+  .bookings-overlay {
+    position: relative;
+    background: white;
+  }
+  
+  .bookings-container {
+    max-height: none;
+    box-shadow: none;
+  }
+  
+  .bookings-container button {
+    display: none;
+  }
+}
+
+/* Tab content transition */
+.tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Large screens (lg: 1024px and above) */
+@media (min-width: 1024px) {
+  .bookings-container {
+    max-width: 80vw;
+  }
+  
+  .tab-button {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Medium screens (md: 768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bookings-container {
+    max-width: 90vw;
+    margin: 1rem auto;
+  }
+  
+  .bookings-container .text-5xl {
+    font-size: 3rem;
+  }
+  
+  .bookings-container .text-3xl {
+    font-size: 2rem;
+  }
+}
+
+/* Small screens (sm: 640px - 767px) */
+@media (min-width: 640px) and (max-width: 767px) {
+  .bookings-overlay {
+    padding: 0.5rem;
+  }
+  
+  .bookings-container {
+    max-height: 95vh;
+    margin: 0.5rem;
+  }
+  
+  .bookings-container .text-5xl {
+    font-size: 2.25rem;
+  }
+  
+  .bookings-container .text-3xl {
+    font-size: 1.5rem;
+  }
+  
+  .tab-button {
+    padding: 0.875rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small screens (xs: below 640px) */
+@media (max-width: 639px) {
+  .bookings-overlay {
+    padding: 0.25rem;
+  }
+  
+  .bookings-container {
+    max-height: 98vh;
+    margin: 0.25rem;
+    border-radius: 1rem;
+  }
+  
+  /* Header adjustments for mobile */
+  .bookings-container .bg-gradient-to-r {
+    height: 3rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+  
+  .bookings-container .text-5xl {
+    font-size: 1.75rem;
+  }
+  
+  .bookings-container .text-3xl {
+    font-size: 1.25rem;
+  }
+  
+  .bookings-container .text-xl {
+    font-size: 1.125rem;
+  }
+  
+  /* Tab adjustments for mobile */
+  .tab-button {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  
+  /* Booking card mobile optimizations */
+  .booking-card {
+    padding: 0.75rem;
+  }
+  
+  .booking-card .text-base {
+    font-size: 0.875rem;
+  }
+  
+  .booking-card .text-lg {
+    font-size: 1rem;
+  }
+  
+  /* Button adjustments for mobile */
+  .bookings-container button {
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Status badge mobile */
+  .bookings-container .px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .bookings-container .py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+/* Ultra-small screens (below 400px) */
+@media (max-width: 400px) {
+  .bookings-container {
+    margin: 0.125rem;
+  }
+  
+  .bookings-container .p-4 {
+    padding: 0.75rem;
+  }
+  
+  .bookings-container .text-5xl {
+    font-size: 1.5rem;
+  }
+  
+  .tab-button {
+    padding: 0.625rem 0.375rem;
+    font-size: 0.65rem;
+  }
+  
+  .booking-card {
+    padding: 0.625rem;
+  }
+  
+  .bookings-container button {
+    font-size: 0.7rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+/* Landscape mode optimizations */
+@media (max-height: 600px) and (orientation: landscape) {
+  .bookings-container {
+    max-height: 85vh;
+  }
+  
+  .bookings-container .py-20 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .bookings-container .py-10 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .booking-card {
+    padding: 0.75rem;
+  }
+  
+  .bookings-container .p-8 {
+    padding: 1rem;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .bookings-container {
+    border-width: 0.5px;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .bookings-container,
+  .booking-card,
+  .tab-button,
+  .bookings-container button {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  .bookings-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .booking-card:hover {
+    transform: none;
+  }
+  
+  .tab-button:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+  
+  .bookings-container button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Very large screens (4K and above) */
+@media (min-width: 2000px) {
+  .bookings-container {
+    max-width: 1200px;
+  }
+  
+  .bookings-container .text-5xl {
+    font-size: 4rem;
+  }
+  
+  .bookings-container .text-3xl {
+    font-size: 2.5rem;
+  }
+  
+  .tab-button {
+    padding: 1.25rem 2rem;
+    font-size: 1.125rem;
+  }
+}
