@@ -1142,11 +1142,11 @@ html {
   }
 
   /* Smaller circles on mobile */
-  .absolute.w-\\[500px\\].h-\\[500px\\] {
+  .absolute[class*="w-[500px]"][class*="h-[500px]"] {
     width: 400px !important;
     height: 400px !important;
   }
-  .absolute.w-\\[550px\\].h-\\[550px\\] {
+  .absolute[class*="w-[550px]"][class*="h-[550px]"] {
     width: 450px !important;
     height: 450px !important;
   }
@@ -1339,13 +1339,13 @@ html {
 }
 
 /* Fixed menu styles */
-.bg-gradient-to-br.from-gray-900\\/95.via-gray-900\\/95.to-black\\/95 {
+[class*="from-gray-900/95"][class*="to-black/95"] {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
 /* Better hover states for menu items */
-.hover\\:bg-white\\/5:hover {
+[class*="hover:bg-white/5"]:hover {
   background: rgba(255, 255, 255, 0.05);
 }
 
@@ -1380,15 +1380,15 @@ a:focus-visible {
 }
 
 /* Hover effects */
-.hover\\:scale-105:hover {
+[class*="hover:scale-105"]:hover {
   transform: scale(1.05);
 }
 
-.hover\\:scale-110:hover {
+[class*="hover:scale-110"]:hover {
   transform: scale(1.1);
 }
 
-.group:hover .group-hover\\:scale-110 {
+.group:hover [class*="group-hover:scale-110"] {
   transform: scale(1.1);
 }
 
@@ -1400,7 +1400,7 @@ a:focus-visible {
 }
 
 /* Enhanced logo styling */
-.font-['Tenali_Ramakrishna'] {
+[class*="Tenali_Ramakrishna"], .font-tenali {
   font-family: "Tenali Ramakrishna", sans-serif;
 }
 

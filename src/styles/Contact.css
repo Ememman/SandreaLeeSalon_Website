@@ -144,7 +144,8 @@ footer .scroll-stagger-3 {
   animation: none !important;
 }
 
-.footer-section .bg-\[#0A142F\] {
+.footer-section [class*="bg-[#0A142F]"],
+.footer-section .bg-\[\#0A142F\] {
   background-color: #0A142F !important;
   position: relative;
   z-index: 5;
