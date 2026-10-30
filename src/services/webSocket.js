@@ -1,6 +1,12 @@
 // Frontend WebSocket service
 import { io } from "socket.io-client";
 
+const WS_URL =
+  import.meta.env.VITE_WS_URL ||
+  (import.meta.env.VITE_API_URL
+    ? import.meta.env.VITE_API_URL.replace(/\/api\/?$/, "")
+    : "http://localhost:3000");
+
 class WebSocketService {
   constructor() {
     this.socket = null;
@@ -12,13 +18,13 @@ class WebSocketService {
       return this.socket;
     }
 
-    this.socket = io("http://localhost:3000", {
+    this.socket = io(WS_URL, {
       transports: ["websocket", "polling"],
       withCredentials: true,
     });
 
     this.socket.on("connect", () => {
-      console.log("✅ Connected to WebSocket server");
+      console.log("✅ Connected to WebSocket server at", WS_URL);
       this.isConnected = true;
     });
 
