@@ -1,5 +1,6 @@
 // src/contexts/ToastContext.jsx
 import React, { createContext, useContext, useState } from "react";
+import ToastContainer from "../components/ui/ToastContainer.jsx";
 
 const ToastContext = createContext();
 
@@ -15,7 +16,7 @@ export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   const addToast = (toast) => {
-    const id = Math.random().toString(36).substr(2, 9);
+    const id = Math.random().toString(36).substring(2, 9);
     const toastWithId = {
       id,
       ...toast,
