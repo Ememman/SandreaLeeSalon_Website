@@ -72,47 +72,8 @@ const Checkout = lazy(() =>
   })
 );
 
-// Payment component
-const Payment = lazy(() =>
-  import("./menu/Payment").catch((error) => {
-    console.error("❌ Failed to load Payment component:", error);
-    return {
-      default: () => (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="text-center">
-            <h2 className="text-xl font-semibold text-red-600 mb-2">
-              Payment Component Failed to Load
-            </h2>
-            <p className="text-gray-600">
-              Please check if the Payment.jsx file exists in the menu directory.
-            </p>
-          </div>
-        </div>
-      ),
-    };
-  })
-);
-
-// Order component
-const Order = lazy(() =>
-  import("./menu/Order").catch((error) => {
-    console.error("❌ Failed to load Order component:", error);
-    return {
-      default: () => (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="text-center">
-            <h2 className="text-xl font-semibold text-red-600 mb-2">
-              Order Component Failed to Load
-            </h2>
-            <p className="text-gray-600">
-              Please check if the Order.jsx file exists in the menu directory.
-            </p>
-          </div>
-        </div>
-      ),
-    };
-  })
-);
+import Payment from "./menu/Payment";
+import Order from "./menu/Order";
 
 // CORRECTED: Reports component import with proper error handling
 const Reports = lazy(() =>

@@ -1,4 +1,4 @@
-// src/components/ui/Toast.jsx
+// src/components/ui/ToastContainer.jsx
 import React, { useEffect, useState } from "react";
 import {
   IoCheckmarkCircle,
@@ -9,7 +9,7 @@ import {
 } from "react-icons/io5";
 import "../../styles/Toast.css";
 
-const Toast = ({ type = "default", message, duration = 5000, onClose }) => {
+export const Toast = ({ type = "default", message, duration = 5000, onClose }) => {
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Toast = ({ type = "default", message, duration = 5000, onClose }) => {
   const handleClose = () => {
     setIsLeaving(true);
     setTimeout(() => {
-      onClose();
+      if (onClose) onClose();
     }, 300);
   };
 
@@ -57,14 +57,15 @@ const Toast = ({ type = "default", message, duration = 5000, onClose }) => {
   const { icon, className } = getToastConfig();
 
   return (
-    <div className={`toast ${className} ${isLeaving ? "toast-leaving" : ""}`}>
+    <div className={`toast ${className} ${isLeaving ? "toast-leaving" : ""}`} role="status">
       <div className="toast-content">
         <div className="toast-icon-wrapper">{icon}</div>
         <div className="toast-message">{message}</div>
         <button
           className="toast-close-btn"
           onClick={handleClose}
-          aria-label="Close notification">
+          aria-label="Close notification"
+          type="button">
           <IoClose className="toast-close-icon" />
         </button>
       </div>
@@ -75,6 +76,24 @@ const Toast = ({ type = "default", message, duration = 5000, onClose }) => {
           animationPlayState: isLeaving ? "paused" : "running",
         }}
       />
+    </div>
+  );
+};
+
+export const ToastContainer = ({ toasts = [], removeToast }) => {
+  if (!toasts || toasts.length === 0) return null;
+
+  return (
+    <div className="toast-container" aria-live="polite">
+      {toasts.map((toast) => (
+        <Toast
+          key={toast.id}
+          type={toast.type}
+          message={toast.message}
+          duration={toast.duration}
+          onClose={() => removeToast && removeToast(toast.id)}
+        />
+      ))}
     </div>
   );
 };
